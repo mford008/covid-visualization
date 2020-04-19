@@ -47,6 +47,15 @@
 .BarChart-bar {
     transition: 0.5s;
     max-height: 100%;
+    padding: 5px;
+}
+
+.BarChart-bar-remove {
+    margin-left: 15px;
+}
+
+.BarChart-bar-title {
+    font-weight: bold;
 }
 
 .BarChart-bar:nth-child(even) {
