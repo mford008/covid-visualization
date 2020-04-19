@@ -1,0 +1,38 @@
+:root {
+    --bg-color: #EFFCEF;
+    --bar-color-1: #CCEDD2;
+    --bar-color-2: #94D3AC;
+    --font-color: #655C56;
+    --page-margin: 1em;
+    --bar-margin: .5em;
+    --header-size: 2em;
+    --font-size-1: 1em;
+    }
+.Container {
+    color: var(--font-color);
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: var(--bg-color);
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+    grid-template-columns: 1fr 4fr 1fr;
+    height: 100vh;
+}
+
+.Header {
+    font-weight: bolder;
+    grid-row: 1;
+    grid-column: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Header-content {
+    font-size: 20px;
+}
+
+.BarChart {
+    grid-row: 2;
+    grid-column: 2;
+    display: flex;
+}
