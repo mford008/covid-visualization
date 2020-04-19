@@ -1,8 +1,10 @@
 :root {
     --bg-color: #EFFCEF;
+    --bg-color-hover: #D9A966;
     --bar-color-1: #CCEDD2;
     --bar-color-2: #94D3AC;
     --font-color: #655C56;
+    --border-color: #808000;
     --page-margin: 1em;
     --bar-margin: .5em;
     --header-size: 2em;
@@ -28,6 +30,7 @@
 }
 
 .Header-content {
+    text-align: center;
     font-size: 20px;
 }
 
@@ -35,4 +38,26 @@
     grid-row: 2;
     grid-column: 2;
     display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: var(--page-margin);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.BarChart-bar {
+    transition: 0.5s;
+}
+
+.BarChart-bar:nth-child(even) {
+    background-color: var(--bar-color-1);
+}
+
+.BarChart-bar:nth-child(odd) {
+    background-color: var(--bar-color-2);
+}
+
+.BarChart-bar:hover,
+.BarChart-bar:active,
+.BarChart-bar:focus {
+    background-color: var(--bg-color-hover);
 }
