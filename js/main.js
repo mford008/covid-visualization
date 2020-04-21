@@ -6,12 +6,21 @@ doFetch = () => {
     .then(data => {
         for (country in data.Countries) {
             if (countries.includes(data.Countries[country].Country)) {
+                console.log(data.Countries[country]);
+                let countryName = data.Countries[country].Country;
+                let countryDeaths = data.Countries[country].TotalDeaths;
+                let countryConfirmed = data.Countries[country].TotalConfirmed;
+                let countryRecoveries = data.Countries[country].TotalRecovered;
                 let chart = document.querySelector(".BarChart");
                 let height = Math.floor((data.Countries[country].TotalConfirmed) / 1000);
                 chart.innerHTML += `
-                    <div id="bar-${country}" class="BarChart-bar" style="height: ${height}%">
+                    <div id="bar-${country}" 
+                        class="BarChart-bar" 
+                        style="height: ${height}%" 
+                        onClick="alert('${countryName}: ${countryConfirmed} confirmed cases, ${countryDeaths} deaths, ${countryRecoveries} recoveries')"
+                        > 
                         ${data.Countries[country].CountryCode}
-                        <button class="BarChart-bar-remove" onclick=removeCountry(event) >X</button>
+                        <button class="BarChart-bar-remove" onclick=removeCountry(event)>X</button>
                     </div>
                 `;
             }
