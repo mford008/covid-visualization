@@ -9,7 +9,8 @@ function App() {
     fetch("https://api.covid19api.com/summary")
       .then(response => response.json())
       .then(data =>  {
-        setState({ data: data })
+        console.log((data.Countries));
+        setState({ data: data.Countries })
       })
   }, []);
 
@@ -18,13 +19,9 @@ function App() {
   return (
     <div className="App">
       <div>
-      {/* {state.data.Countries.map((country) => {
-        <h1>{country.Country}</h1>
-        })
-      } */}
-      {state.data.Countries.map(datum => (
+      {(state.data).map(datum => (
         <div>
-          {datum.Country}
+            {datum.Country}
         </div>
         ))
       }
