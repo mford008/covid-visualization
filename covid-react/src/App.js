@@ -5,6 +5,9 @@ function App() {
   const [state, setState] = useState({
     data: [],
   });
+
+  const countries = ['United States of America', 'Spain', 'China', 'Brazil', 'Australia'];
+
   useEffect(() => {
     fetch("https://api.covid19api.com/summary")
       .then(response => response.json())
@@ -14,17 +17,38 @@ function App() {
       })
   }, []);
 
-  const countries = ['United States of America', 'Spain', 'China', 'Brazil', 'Australia'];
-  
+  // addCountry(() => {
+  //   console.log('test');
+  // });
+
   return (
     <div className="App">
-      <div>
-      {(state.data).map(datum => (
-        <div>
-            {datum.Country}
+      <div className="Container">
+        <div className="Header">
+          <h1 className="Header-content">Data Visualization for COVID-19</h1>
         </div>
-        ))
-      }
+        <div class="Selector">
+            <label for="countries">Select Country:</label>
+            {/* <select id="countries" onchange="addCountry()"> */}
+            <select id="countries" onchange="addCountry">
+            {(state.data).map(datum => (
+              <option>
+                {datum.Country}
+              </option>
+            ))
+          }
+            </select>
+        </div>
+        <div className="BarChart">
+          {(state.data)
+          .filter(datum => countries.includes(datum.Country))
+          .map(datum => (
+              <div className="BarChart-bar" style={{height: (datum.TotalConfirmed / 1000) + "%"}}>
+                {datum.CountryCode}
+              </div>
+            ))
+          }
+        </div>
       </div>
     </div>
   );
