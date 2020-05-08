@@ -1,25 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 
+let countries = ['United States of America', 'Spain', 'China', 'Brazil', 'Australia'];
+
 function App() {
   const [state, setState] = useState({
     data: [],
   });
 
-  const countries = ['United States of America', 'Spain', 'China', 'Brazil', 'Australia'];
-
   useEffect(() => {
     fetch("https://api.covid19api.com/summary")
       .then(response => response.json())
       .then(data =>  {
-        console.log((data.Countries));
         setState({ data: data.Countries })
       })
   }, []);
 
-  // addCountry(() => {
-  //   console.log('test');
-  // });
+  function addCountry(country) {
+    console.log(country);
+  }
 
   return (
     <div className="App">
@@ -27,10 +26,9 @@ function App() {
         <div className="Header">
           <h1 className="Header-content">Data Visualization for COVID-19</h1>
         </div>
-        <div class="Selector">
-            <label for="countries">Select Country:</label>
-            {/* <select id="countries" onchange="addCountry()"> */}
-            <select id="countries" onchange="addCountry">
+        <div className="Selector">
+            <label htmlFor="countries">Select Country:</label>
+            <select id="countries" onChange={e => addCountry(e.currentTarget.value)}>
             {(state.data).map(datum => (
               <option>
                 {datum.Country}
