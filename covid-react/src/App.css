@@ -44,9 +44,29 @@
   border-bottom: 2px solid var(--border-color);
 }
 
-.Selector {
+.Subheader {
   grid-row: 2;
   grid-column: 2;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Selector-label {
+  font-weight: bold;
+}
+
+.DisplayStats {
+  justify-self: left;
+}
+
+.DisplayStats-content {
+  margin: 0;
+  font-weight: bold;
+}
+
+.DisplayStats-content-data {
+  margin: 0;
+  font-weight: normal;
 }
 
 .BarChart-bar {
@@ -54,6 +74,8 @@
   max-height: 100%;
   min-height: 5%;
   padding: 5px;
+  margin-bottom: 1px;
+  width: 100%;
 }
 
 .BarChart-bar-remove {
