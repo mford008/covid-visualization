@@ -18,9 +18,14 @@ class App extends Component {
   }
 
   addCountry(country) {
-    console.log(typeof country);
-    this.setState([...this.state.displayCountries, this.state.data[country]])
-    console.log(this.state.displayCountries);
+    this.state.data.map(each => {
+      if (country === each.Country) {
+        this.setState({
+          displayCountries: this.state.displayCountries.concat(each)
+        });
+        console.log(this.state.displayCountries);
+      }
+    }) 
   }
 
   render() {
