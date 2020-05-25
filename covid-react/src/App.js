@@ -24,8 +24,9 @@ class App extends Component {
   }
 
   addCountry(selected) {
+    const selectedInDisplayCountries = this.state.displayCountries.map(test => (Object.values(test))[0]).includes(selected);
     this.state.data.map(country => {
-      if (selected === country.Country) {
+      if (selected === country.Country && !selectedInDisplayCountries) {
         this.setState({
           displayCountries: this.state.displayCountries.concat(country),
           selectedCountry: country.Country,
@@ -95,7 +96,7 @@ class App extends Component {
         </div>
         <div className="BarChart">
           {(this.state.displayCountries).map(datum => (
-            <div className="BarChart-bar" onClick={(event) => this.displayStats(event.target.innerText)} style={{height: (datum.TotalConfirmed / 1000) + "%"}}>
+            <div className="BarChart-bar" onClick={(event) => this.displayStats(event.target.innerText)} style={{height: (datum.TotalConfirmed / 10000) + "%"}}>
             {datum.CountryCode} 
             {/* <button onClick={(event) => this.removeCountry(event)}>X</button> */}
             </div>
