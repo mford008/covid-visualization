@@ -66,7 +66,7 @@ class App extends Component {
       <div className="App">
       <div className="Container">
         <div className="Header">
-          <h1 className="Header-content">Data Visualization for COVID-19</h1>
+          <h1 className="Header-content">Data Visualization for COVID-19 - Total Confirmed Cases</h1>
         </div>
         <div className="Subheader">
           <div className="Selector">
