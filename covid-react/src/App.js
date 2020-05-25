@@ -80,11 +80,18 @@ class App extends Component {
             }
               </select>
           </div>
-          <div className="DisplayStats">
-          <p className="DisplayStats-content">Country: <span className="DisplayStats-content-data">{this.state.selectedCountry}</span></p>
-          <p className="DisplayStats-content">Confirmed Cases: <span className="DisplayStats-content-data">{this.state.selectedCountryTotal}</span></p>
-          <p className="DisplayStats-content">Deaths: <span className="DisplayStats-content-data">{this.state.selectedCountryDeaths}</span></p>
-          <p className="DisplayStats-content">Recoveries: <span className="DisplayStats-content-data">{this.state.selectedCountryRecovered}</span></p>
+          <div className="CountryStats">
+            <h2 className="CountryStats-header">Selected Country Data:</h2>
+            <p className="CountryStats-content">Country: <span className="CountryStats-content-data">{this.state.selectedCountry}</span></p>
+            <p className="CountryStats-content">Confirmed Cases: <span className="CountryStats-content-data">{this.state.selectedCountryTotal}</span></p>
+            <p className="CountryStats-content">Deaths: <span className="CountryStats-content-data">{this.state.selectedCountryDeaths}</span></p>
+            <p className="CountryStats-content">Recoveries: <span className="CountryStats-content-data">{this.state.selectedCountryRecovered}</span></p>
+          </div>
+          <div className="GlobalStats">
+            <h2 className="GlobalStats-header">Global Data: </h2>
+            <p className="GlobalStats-content">Confirmed Cases: <span className="GlobalStats-content-data">{this.state.globalData.TotalConfirmed}</span></p>
+            <p className="GlobalStats-content">Deaths: <span className="GlobalStats-content-data">{this.state.globalData.TotalDeaths}</span></p>
+            <p className="GlobalStats-content">Recoveries: <span className="GlobalStats-content-data">{this.state.globalData.TotalRecovered}</span></p>
           </div>
         </div>
         <div className="BarChart">

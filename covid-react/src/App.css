@@ -53,18 +53,43 @@
 
 .Selector-label {
   font-weight: bold;
+  font-size: 18px;
 }
 
-.DisplayStats {
+.CountryStats {
   justify-self: left;
 }
 
-.DisplayStats-content {
+.CountryStats-header {
+  margin: 0;
+  font-size: 18px;
+}
+
+.CountryStats-content {
   margin: 0;
   font-weight: bold;
 }
 
-.DisplayStats-content-data {
+.CountryStats-content-data {
+  margin: 0;
+  font-weight: normal;
+}
+
+.GlobalStats {
+  justify-self: left;
+}
+
+.GlobalStats-header {
+  margin: 0;
+  font-size: 18px;
+}
+
+.GlobalStats-content {
+  margin: 0;
+  font-weight: bold;
+}
+
+.GlobalStats-content-data {
   margin: 0;
   font-weight: normal;
 }
