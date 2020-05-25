@@ -85,6 +85,8 @@
   padding: 5px;
   margin-bottom: 1px;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .BarChart-bar-remove {
@@ -109,3 +111,12 @@
   background-color: var(--bg-color-hover);
 }
 
+.BarChart-button {
+  display: flex;
+  height: max-content;
+}
+
+.BarChart-title {
+  height: 100%;
+  width: 100%;
+}

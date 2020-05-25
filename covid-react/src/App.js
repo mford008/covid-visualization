@@ -38,16 +38,16 @@ class App extends Component {
     }) 
   }
 
-  removeCountry(country) {
-    console.log(country);
-    // this.state.data.map(each => {
-    //   if (country === each.Country) {
-    //     this.setState({
-    //       displayCountries: this.state.displayCountries.splice(each)
-    //     });
-    //     console.log(this.state.displayCountries);
-    //   }
-    // }) 
+  removeCountry(selected) {  
+    Object.values(this.state.displayCountries).map(country => {
+      if (selected.target.nextSibling.innerText === country.CountryCode) {
+        const listCopy = this.state.displayCountries.slice();
+        const newList = listCopy.filter(function(e) { return e !== country });
+        this.setState({
+          displayCountries: newList,
+        });
+      }
+    })
   }
 
   displayStats(abbreviation) {
@@ -96,9 +96,9 @@ class App extends Component {
         </div>
         <div className="BarChart">
           {(this.state.displayCountries).map(datum => (
-            <div className="BarChart-bar" onClick={(event) => this.displayStats(event.target.innerText)} style={{height: (datum.TotalConfirmed / 10000) + "%"}}>
-            {datum.CountryCode} 
-            {/* <button onClick={(event) => this.removeCountry(event)}>X</button> */}
+            <div className="BarChart-bar" style={{height: (datum.TotalConfirmed / 10000) + "%"}}>
+              <button className="BarChart-button" onClick={(event) => this.removeCountry(event)}>X</button>
+              <div className="BarChart-title" onClick={(event) => this.displayStats(event.target.innerText)}>{datum.CountryCode}</div>
             </div>
             ))
           }
