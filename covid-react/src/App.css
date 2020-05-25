@@ -51,48 +51,32 @@
   justify-content: space-between;
 }
 
-.Selector-label {
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.CountryStats {
-  justify-self: left;
-}
-
-.CountryStats-header {
-  margin: 0;
-  font-size: 18px;
-}
-
-.CountryStats-content {
-  margin: 0;
-  font-weight: bold;
-}
-
-.CountryStats-content-data {
-  margin: 0;
-  font-weight: normal;
-}
-
-.GlobalStats {
-  justify-self: left;
-}
-
-.GlobalStats-header {
-  margin: 0;
-  font-size: 18px;
-}
-
-.GlobalStats-content {
-  margin: 0;
-  font-weight: bold;
-}
-
+.CountryStats-header,
+.GlobalStats-header,
+.CountryStats-content,
+.GlobalStats-content,
+.CountryStats-content-data,
 .GlobalStats-content-data {
   margin: 0;
+}
+
+.CountryStats-header,
+.GlobalStats-header,
+.Selector-label {
+  font-size: 18px;
+}
+
+.CountryStats-content,
+.GlobalStats-content,
+.Selector-label {
+  font-weight: bold;
+}
+
+.CountryStats-content-data,
+.GlobalStats-content-data {
   font-weight: normal;
 }
+
 
 .BarChart-bar {
   transition: 0.5s;
