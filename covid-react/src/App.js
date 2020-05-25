@@ -17,22 +17,21 @@ class App extends Component {
     fetch("https://api.covid19api.com/summary")
       .then(response => response.json())
       .then(data =>  {
-        console.log(data);
         this.setState({ globalData: data.Global })
         this.setState({ data: data.Countries })
         this.setState({ displayCountries: (this.state.data).filter(datum => (countries.includes(datum.Country)))})
       })
   }
 
-  addCountry(country) {
-    this.state.data.map(each => {
-      if (country === each.Country) {
+  addCountry(selected) {
+    this.state.data.map(country => {
+      if (selected === country.Country) {
         this.setState({
-          displayCountries: this.state.displayCountries.concat(each),
-          selectedCountry: each.Country,
-          selectedCountryTotal: each.TotalConfirmed,
-          selectedCountryDeaths: each.TotalDeaths,
-          selectedCountryRecovered: each.TotalRecovered,
+          displayCountries: this.state.displayCountries.concat(country),
+          selectedCountry: country.Country,
+          selectedCountryTotal: country.TotalConfirmed,
+          selectedCountryDeaths: country.TotalDeaths,
+          selectedCountryRecovered: country.TotalRecovered,
         });
       }
     }) 
