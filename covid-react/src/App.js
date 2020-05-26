@@ -39,16 +39,16 @@ class App extends Component {
     }) 
   }
 
-  removeCountry(selected) {  
-    Object.values(this.state.displayCountries).map(country => {
-      if (selected.target.previousSibling.innerText === country.CountryCode) {
+  removeCountry(selected) {
+    this.state.displayCountries.map(country => {
+      if (selected.target.previousSibling.innerText === country.Country) {
         const listCopy = this.state.displayCountries.slice();
-        const newList = listCopy.filter(function(e) { return e !== country });
+        const newList = listCopy.filter((event) => event !== country);
         this.setState({
           displayCountries: newList,
         });
       }
-    })
+    });
   }
 
   displayStats(event) {
