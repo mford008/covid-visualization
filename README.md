@@ -3,8 +3,8 @@ This is a JavaScript and React project aimed at visualizing COVID-19 data across
 
 Users can add and remove countries from the chart visualization, click to get more details, and compare against global data. 
 
-![image](./overview.png)
+![image](./overview2.png)
 
 Features in progress include:
-* Integration of country population data to give users a sense of the percentage of each country's total population that has contracted COVID-19
-* A dropdown menu for each of the data categories (Total Confirmed Cases, Total Deaths, and Total Recoveries)
+* Integration of country population data (for viewing proportion of a given country that has had a confirmed case, died, or recovered)
+* Hover/Click widget to replace Selected Country Data block for a better user experience

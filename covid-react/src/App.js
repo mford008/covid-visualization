@@ -5,6 +5,7 @@ let countries = ['United States of America', 'Spain', 'China', 'Brazil', 'Austra
 
 class App extends Component {
   state = {
+    dataType: 'Total Confirmed',
     globalData: [],
     data: [],
     displayCountries: [],
@@ -40,7 +41,7 @@ class App extends Component {
 
   removeCountry(selected) {  
     Object.values(this.state.displayCountries).map(country => {
-      if (selected.target.nextSibling.innerText === country.CountryCode) {
+      if (selected.target.previousSibling.innerText === country.CountryCode) {
         const listCopy = this.state.displayCountries.slice();
         const newList = listCopy.filter(function(e) { return e !== country });
         this.setState({
@@ -50,8 +51,8 @@ class App extends Component {
     })
   }
 
-  displayStats(abbreviation) {
-    console.log(this.state.displayCountries);
+  displayStats(event) {
+    const abbreviation = event.target.innerText;
     const selected = this.state.displayCountries.filter(country => country.CountryCode === abbreviation);
     this.setState({
       selectedCountry: selected[0].Country,
@@ -61,24 +62,41 @@ class App extends Component {
     })
   }
 
+  switchDataType(event) {
+    const newDataType = event.replace(/ +/g, "");
+    this.setState({
+      dataType: newDataType,
+    })
+  }
+
   render() {
     return (
       <div className="App">
       <div className="Container">
         <div className="Header">
-          <h1 className="Header-content">Data Visualization for COVID-19 - Total Confirmed Cases</h1>
+          <h1 className="Header-content">Data Visualization for COVID-19</h1>
         </div>
         <div className="Subheader">
-          <div className="Selector">
-              <label className="Selector-label" htmlFor="countries">Select Country: </label>
-              <select id="countries" onChange={(event) => this.addCountry(event.target.value)}>
-              {(this.state.data).map(datum => (
-                <option>
-                  {datum.Country}
-                </option>
-              ))
-            }
-              </select>
+          <div className="SelectorContainer">
+            <div className="Selector Selector--Country">
+                <label className="Selector-label" htmlFor="countries">Select Country: </label>
+                <select id="countries" onChange={(event) => this.addCountry(event.target.value)}>
+                  {(this.state.data).map(datum => (
+                    <option>
+                      {datum.Country}
+                    </option>
+                  ))
+                  }
+                </select>
+            </div>
+            <div className="Selector Selector--DataType">
+                <label className="Selector-label" htmlFor="dataType">Select Type of Data: </label>
+                <select id="dataType" onChange={(event) => this.switchDataType(event.target.value)}>
+                    <option>Total Confirmed</option>
+                    <option>Total Deaths</option>
+                    <option>Total Recovered</option>
+                </select>
+            </div>
           </div>
           <div className="CountryStats">
             <h2 className="CountryStats-header">Selected Country Data:</h2>
@@ -96,9 +114,9 @@ class App extends Component {
         </div>
         <div className="BarChart">
           {(this.state.displayCountries).map(datum => (
-            <div className="BarChart-bar" style={{height: (datum.TotalConfirmed / 10000) + "%"}}>
+            <div className="BarChart-bar" style={{height: (datum[(this.state.dataType).replace(/ +/g, "")] / 10000) + "%"}}>
+              <div className="BarChart-title" onClick={(event) => this.displayStats(event)}>{datum.Country}</div>
               <button className="BarChart-button" onClick={(event) => this.removeCountry(event)}>X</button>
-              <div className="BarChart-title" onClick={(event) => this.displayStats(event.target.innerText)}>{datum.CountryCode}</div>
             </div>
             ))
           }
