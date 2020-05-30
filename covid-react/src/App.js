@@ -52,8 +52,8 @@ class App extends Component {
   }
 
   displayStats(event) {
-    const abbreviation = event.target.innerText;
-    const selected = this.state.displayCountries.filter(country => country.CountryCode === abbreviation);
+    const countryName = event.target.innerText;
+    const selected = this.state.displayCountries.filter(country => country.Country === countryName);
     this.setState({
       selectedCountry: selected[0].Country,
       selectedCountryTotal: selected[0].TotalConfirmed,
