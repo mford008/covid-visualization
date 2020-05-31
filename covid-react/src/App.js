@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import StatsBlock from './components/StatsBlock/StatsBlock';
+// import BarChart from './components/BarGraph/BarGraph';
 
 let countries = ['United States of America', 'Spain', 'China', 'Brazil', 'Australia'];
 
@@ -53,7 +55,7 @@ class App extends Component {
 
   displayStats(event) {
     const abbreviation = event.target.innerText;
-    const selected = this.state.displayCountries.filter(country => country.CountryCode === abbreviation);
+    const selected = this.state.displayCountries.filter(country => country.Country === abbreviation);
     this.setState({
       selectedCountry: selected[0].Country,
       selectedCountryTotal: selected[0].TotalConfirmed,
@@ -98,20 +100,23 @@ class App extends Component {
                 </select>
             </div>
           </div>
-          <div className="CountryStats">
-            <h2 className="CountryStats-header">Selected Country Data:</h2>
-            <p className="CountryStats-content">Country: <span className="CountryStats-content-data">{this.state.selectedCountry}</span></p>
-            <p className="CountryStats-content">Confirmed Cases: <span className="CountryStats-content-data">{this.state.selectedCountryTotal}</span></p>
-            <p className="CountryStats-content">Deaths: <span className="CountryStats-content-data">{this.state.selectedCountryDeaths}</span></p>
-            <p className="CountryStats-content">Recoveries: <span className="CountryStats-content-data">{this.state.selectedCountryRecovered}</span></p>
-          </div>
-          <div className="GlobalStats">
-            <h2 className="GlobalStats-header">Global Data: </h2>
-            <p className="GlobalStats-content">Confirmed Cases: <span className="GlobalStats-content-data">{this.state.globalData.TotalConfirmed}</span></p>
-            <p className="GlobalStats-content">Deaths: <span className="GlobalStats-content-data">{this.state.globalData.TotalDeaths}</span></p>
-            <p className="GlobalStats-content">Recoveries: <span className="GlobalStats-content-data">{this.state.globalData.TotalRecovered}</span></p>
-          </div>
+          <StatsBlock
+            type="country"
+            header="Country Data:"
+            confirmed={this.state.selectedCountryTotal}
+            deaths={this.state.selectedCountryDeaths}
+            recovered={this.state.selectedCountryRecovered}
+            data={this.state}>
+          </StatsBlock>
+          <StatsBlock
+            type="data-type"
+            header="Global Data:"
+            confirmed={this.state.globalData.TotalConfirmed}
+            deaths={this.state.globalData.TotalDeaths}
+            recovered={this.state.globalData.TotalRecovered}>
+          </StatsBlock>
         </div>
+        {/* <BarChart data={this.state.displayCountries} dataType={this.state.dataType} displayStats={this.displayStats} removeCountry={this.removeCountry}></BarChart> */}
         <div className="BarChart">
           {(this.state.displayCountries).map(datum => (
             <div className="BarChart-bar" style={{height: (datum[(this.state.dataType).replace(/ +/g, "")] / 10000) + "%"}}>
