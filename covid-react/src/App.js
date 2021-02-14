@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import StatsBlock from './components/StatsBlock/StatsBlock';
-// import BarChart from './components/BarGraph/BarGraph';
+import BarChart from './components/BarGraph/BarGraph';
 
 let countries = ['United States of America', 'Spain', 'China', 'Brazil', 'Australia'];
 
@@ -116,8 +116,8 @@ class App extends Component {
             recovered={this.state.globalData.TotalRecovered}>
           </StatsBlock>
         </div>
-        {/* <BarChart data={this.state.displayCountries} dataType={this.state.dataType} displayStats={this.displayStats} removeCountry={this.removeCountry}></BarChart> */}
-        <div className="BarChart">
+        <BarChart onBarSelected={this.displayStats} data={this.state.displayCountries} dataType={this.state.dataType} displayStats={this.displayStats} removeCountry={this.removeCountry}></BarChart>
+        {/* <div className="BarChart">
           {(this.state.displayCountries).map(datum => (
             <div className="BarChart-bar" style={{height: (datum[(this.state.dataType).replace(/ +/g, "")] / 10000) + "%"}}>
               <div className="BarChart-title" onClick={(event) => this.displayStats(event)}>{datum.Country}</div>
@@ -125,7 +125,7 @@ class App extends Component {
             </div>
             ))
           }
-        </div>
+        </div> */}
       </div>
     </div>
     )
